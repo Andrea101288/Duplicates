@@ -13,5 +13,3 @@ run 'python duplicates.py'
 If there is no problems or error you'll see the sentence ex: 
 "Checking complete! Total jpg files found : 2139
 19 equal images found"
-
-If you have any problem or error occurred contact with EU-DET member Andrea Mancini.
