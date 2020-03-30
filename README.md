@@ -13,3 +13,4 @@ run 'python duplicates.py'
 If there is no problems or error you'll see the sentence ex: 
 "Checking complete! Total jpg files found : 2139
 19 equal images found"
+MASTERRRRMERGE
