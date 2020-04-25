@@ -14,26 +14,20 @@ class Images_finder:
 			# asking for an input until you write a correct existing path
 			while True:
 				rootdir = input("Insert source directory where you want to find the duplicate images\n")
-				# if the path name includes "" delete them from the string
 				if '"' in rootdir:
 					rootdir = rootdir.replace('"', '')
-				# if path doesn't exist ask again
 				if(path.exists(rootdir) is False):
-					print("Wrong path, the folder path doesn't exist..")
-				# if path exists	
+					print("Wrong path, the folder path doesn't exist..")	
 				if(path.exists(rootdir) is True):  
 					break  
 			return rootdir
 	
 	# define method to get the destination folder path
 	def get_dst_folder_path(self):
-			# asking for an input until you write a correct existing path
 			while True:
 				rootdir = input("Insert destination directory where you want to move the duplicate images to check them\n")
-				# if the path name includes "" delete them from the string
 				if '"' in rootdir:
 					rootdir = rootdir.replace('"', '')
-				# if path doesn't exist ask again
 				if(path.exists(rootdir) is False):
 					print("Wrong path, the folder path doesn't exist..")
 				# if path exists	
@@ -41,7 +35,7 @@ class Images_finder:
 					break  
 			return rootdir	
 			
-	# define method to store the images into an array
+	# define method to get file extentions
 	def get_ext(self):
 	
 		while True:
@@ -52,9 +46,10 @@ class Images_finder:
 				print("Wrong extention inserted!\n")
 				
 		return ext
+        
 	# define method to store the images into an array
 	def store_images(self, src_dir, ext):
-		# array pictures
+	
 		pictures = []
 		# searching recursively files you are looking for
 		path = os.path.normpath('%s/**/*.'+ext)
@@ -77,17 +72,13 @@ class Images_finder:
 	
 	# define method find_images
 	def find_images(self, image_list, dst_folder):	
-		# inizialize to 0 duolicate images
 		image_dulplicates = 0		
 		for i in range(0, len(image_list)):
-			# get the i-image as current
 			curr = image_list[i]['image']
-			# get the next ones in the array and check them
 			for j in range(i+1, len(image_list)):
 				next = image_list[j]['image']	
 				# calculate the difference between the 2 images
 				difference = cv2.subtract(curr, next) 		
-				# if there is no difference it means they are the same
 				result = not np.any(difference)
 				if result is True:	
 					dir = dst_folder+"/"+image_list[i]['name']
@@ -95,7 +86,6 @@ class Images_finder:
 					if path.exists(dir) is False:
 						os.mkdir(dir)
 						copyfile(os.path.normpath(image_list[i]['path']), os.path.normpath(dir+"/"+image_list[i]['name']))
-					# increase number of duplicates
 					image_dulplicates +=1	
 					# delete de duplicate from the source folder and move it
 					shutil.move(image_list[j]['path'], os.path.normpath(dir+"/"+image_list[j]['name']))	
