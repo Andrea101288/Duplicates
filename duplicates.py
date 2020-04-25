@@ -7,7 +7,7 @@ from os import path
 from shutil import copyfile, copy 
 
 # Define Class
-class Images_finder:	
+class ImagesFinder:	
 	
 	# define method to get the source folder path
 	def get_src_folder_path(self):
@@ -98,7 +98,7 @@ class Images_finder:
 # Main function					
 if __name__ == "__main__":
 
-	Duplicates = Images_finder()
+	Duplicates = ImagesFinder()
 	src_folder = Duplicates.get_src_folder_path()
 	dst_folder = Duplicates.get_dst_folder_path()
 	ext = Duplicates.get_ext()
